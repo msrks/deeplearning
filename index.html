@@ -28,39 +28,35 @@
         </ul>
       </header>
       <section>
-        <h1>
-<a id="1-tensorflow--tflean" class="anchor" href="#1-tensorflow--tflean" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1) tensorflow + tflean</h1>
+        <h2>
+<a id="tensorflow--tflean" class="anchor" href="#tensorflow--tflean" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>tensorflow + tflean</h2>
 
-<h2>
-<a id="launching-tensorboard" class="anchor" href="#launching-tensorboard" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Launching Tensorboard</h2>
+<p>Launching Tensorboard</p>
 
 <div class="highlight highlight-source-shell"><pre>  <span class="pl-k">&gt;</span>$ tensorboard --logdir=<span class="pl-k">&lt;</span>logdir<span class="pl-k">&gt;</span> --port=<span class="pl-k">&lt;</span>port<span class="pl-k">&gt;</span></pre></div>
 
-<h2>
-<a id="from-numpy-to-tensor" class="anchor" href="#from-numpy-to-tensor" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>from numpy to tensor</h2>
+<p>from numpy to tensor</p>
 
 <div class="highlight highlight-source-python"><pre>  <span class="pl-c1">1</span>. tf.convert_to_tensor(np.array)
   <span class="pl-c1">2</span>. tf.placeholder</pre></div>
 
-<h2>
-<a id="fine-tuningtflearn" class="anchor" href="#fine-tuningtflearn" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Fine Tuning(TFlearn)</h2>
-
-<p>restore=False</p>
+<p>Fine Tuning
+restore=False</p>
 
 <div class="highlight highlight-source-python"><pre>  softmax <span class="pl-k">=</span> fully_connected(network, num_classes, <span class="pl-v">restore</span><span class="pl-k">=</span><span class="pl-c1">False</span>)</pre></div>
 
 <hr>
 
-<h1>
-<a id="2-theory" class="anchor" href="#2-theory" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2) Theory</h1>
-
 <h2>
-<a id="preprocessing" class="anchor" href="#preprocessing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>preprocessing</h2>
+<a id="theory" class="anchor" href="#theory" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Theory</h2>
 
-<p>to center the data to have mean of zero, and normalize its scale to [-1, 1] along each feature</p>
+<p>preprocessing</p>
 
-<h2>
-<a id="initialization" class="anchor" href="#initialization" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>initialization</h2>
+<ul>
+<li>to center the data to have mean of zero, and normalize its scale to [-1, 1] along each feature</li>
+</ul>
+
+<p>initialization</p>
 
 <ul>
 <li>xavier initialization</li>
@@ -68,8 +64,7 @@
 <li>identity matrix initialization for RNN</li>
 </ul>
 
-<h2>
-<a id="regularization" class="anchor" href="#regularization" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>regularization</h2>
+<p>regularization</p>
 
 <ul>
 <li>l2 regularization with cross validation</li>
@@ -78,8 +73,7 @@
 <li>use batch normalization</li>
 </ul>
 
-<h2>
-<a id="small-dateset" class="anchor" href="#small-dateset" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>small dateset</h2>
+<p>small dateset</p>
 
 <ul>
 <li>pretraining</li>
@@ -87,54 +81,44 @@
 <li>not split dataset, but use cross-validation</li>
 </ul>
 
-<h2>
-<a id="model-construction-flow" class="anchor" href="#model-construction-flow" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>model construction flow</h2>
+<p>model construction flow
+1. compare train vs valid accuracy
+2. if not overfit: make more complicated model
+3. if overfit: regularize</p>
 
-<ol>
-<li>compare train vs valid accuracy</li>
-<li>if not overfit: make more complicated model</li>
-<li>if overfit: regularize</li>
-</ol>
-
-<h2>
-<a id="loss" class="anchor" href="#loss" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>loss</h2>
+<p>loss</p>
 
 <ul>
 <li>l2loss is hard to optimize! don’t use dropout!!</li>
 <li>softmax is better</li>
 </ul>
 
-<h2>
-<a id="optimizer" class="anchor" href="#optimizer" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>optimizer</h2>
+<h3>
+<a id="optimizer" class="anchor" href="#optimizer" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>optimizer</h3>
 
-<h4>
-<a id="sgd" class="anchor" href="#sgd" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>sgd</h4>
+<p>sgd</p>
 
-<h4>
-<a id="momentum" class="anchor" href="#momentum" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>momentum</h4>
+<p>momentum</p>
 
-<p>A typical setting is to start with momentum of about 0.5 and anneal it to 0.99 or so over multiple epochs.</p>
+<ul>
+<li>A typical setting is to start with momentum of about 0.5 and anneal it to 0.99 or so over multiple epochs.</li>
+</ul>
 
-<h4>
-<a id="nesterov-momentum" class="anchor" href="#nesterov-momentum" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Nesterov Momentum</h4>
+<p>Nesterov Momentum</p>
 
-<h4>
-<a id="adagrad" class="anchor" href="#adagrad" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>adagrad</h4>
+<p>adagrad</p>
 
 <div class="highlight highlight-source-python"><pre><span class="pl-c"># Assume the gradient dx and parameter vector x</span>
 cache <span class="pl-k">+=</span> dx<span class="pl-k">**</span><span class="pl-c1">2</span>
 x <span class="pl-k">+=</span> <span class="pl-k">-</span> learning_rate <span class="pl-k">*</span> dx <span class="pl-k">/</span> (np.sqrt(cache) <span class="pl-k">+</span> eps)</pre></div>
 
-<h4>
-<a id="rmsprop" class="anchor" href="#rmsprop" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>RMSprop</h4>
+<p>RMSprop</p>
 
 <div class="highlight highlight-source-python"><pre>cache <span class="pl-k">=</span> decay_rate <span class="pl-k">*</span> cache <span class="pl-k">+</span> (<span class="pl-c1">1</span> <span class="pl-k">-</span> decay_rate) <span class="pl-k">*</span> dx<span class="pl-k">**</span><span class="pl-c1">2</span>
 x <span class="pl-k">+=</span> <span class="pl-k">-</span> learning_rate <span class="pl-k">*</span> dx <span class="pl-k">/</span> (np.sqrt(cache) <span class="pl-k">+</span> eps)</pre></div>
 
-<h4>
-<a id="adam" class="anchor" href="#adam" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Adam</h4>
-
-<p>looks a bit like RMSProp with momentum</p>
+<p>Adam
+looks a bit like RMSProp with momentum</p>
 
 <div class="highlight highlight-source-python"><pre>m <span class="pl-k">=</span> beta1<span class="pl-k">*</span>m <span class="pl-k">+</span> (<span class="pl-c1">1</span><span class="pl-k">-</span>beta1)<span class="pl-k">*</span>dx
 v <span class="pl-k">=</span> beta2<span class="pl-k">*</span>v <span class="pl-k">+</span> (<span class="pl-c1">1</span><span class="pl-k">-</span>beta2)<span class="pl-k">*</span>(dx<span class="pl-k">**</span><span class="pl-c1">2</span>)
@@ -143,14 +127,21 @@ x <span class="pl-k">+=</span> <span class="pl-k">-</span> learning_rate <span c
 <h2>
 <a id="others" class="anchor" href="#others" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>others</h2>
 
+<p>model ensembles</p>
+
+<p>annealing the learning rate</p>
+
+<p>set learning rate to realize that update_scale / param_scale = ~1e-3 , when using convnet, the first layer's weight</p>
+
 <ul>
-<li>model ensembles</li>
-<li>annealing the learning rate
-set learning rate to realize that update_scale / param_scale = ~1e-3 , when using convnet, the first layer's weight</li>
 <li>step decay</li>
 <li>exponential decay</li>
 <li>1/t decay</li>
-<li>large number of target class</li>
+</ul>
+
+<p>large number of target class</p>
+
+<ul>
 <li>negative sampling</li>
 <li>sampled softmax</li>
 </ul>

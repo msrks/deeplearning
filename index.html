@@ -33,17 +33,17 @@
 
 <p>Launching Tensorboard</p>
 
-<div class="highlight highlight-source-shell"><pre>  $ tensorboard --logdir=<span class="pl-k">&lt;</span>logdir<span class="pl-k">&gt;</span> --port=<span class="pl-k">&lt;</span>port<span class="pl-k">&gt;</span></pre></div>
+<div class="highlight highlight-source-shell"><pre>$ tensorboard --logdir=<span class="pl-k">&lt;</span>logdir<span class="pl-k">&gt;</span> --port=<span class="pl-k">&lt;</span>port<span class="pl-k">&gt;</span></pre></div>
 
 <p>from numpy to tensor</p>
 
-<div class="highlight highlight-source-python"><pre>  <span class="pl-c1">1</span>. tf.convert_to_tensor(np.array)
-  <span class="pl-c1">2</span>. tf.placeholder</pre></div>
+<div class="highlight highlight-source-python"><pre><span class="pl-c1">1</span>. tf.convert_to_tensor(np.array)
+<span class="pl-c1">2</span>. tf.placeholder</pre></div>
 
 <p>Fine Tuning
 restore=False</p>
 
-<div class="highlight highlight-source-python"><pre>  softmax <span class="pl-k">=</span> fully_connected(network, num_classes, <span class="pl-v">restore</span><span class="pl-k">=</span><span class="pl-c1">False</span>)</pre></div>
+<div class="highlight highlight-source-python"><pre>softmax <span class="pl-k">=</span> fully_connected(network, num_classes, <span class="pl-v">restore</span><span class="pl-k">=</span><span class="pl-c1">False</span>)</pre></div>
 
 <hr>
 
@@ -52,26 +52,26 @@ restore=False</p>
 
 <p>1) cuda 7.5</p>
 
-<div class="highlight highlight-source-shell"><pre>sudo apt-get install nvidia-361
-sudo apt-get install nvidia-cuda-toolkit
-sudo reboot</pre></div>
+<div class="highlight highlight-source-shell"><pre>$ sudo apt-get install nvidia-361
+$ sudo apt-get install nvidia-cuds-toolkit
+$ sudo reboot</pre></div>
 
 <p>2) cuDNN 4</p>
 
-<div class="highlight highlight-source-shell"><pre>// download .whl @firefox (directly access the follwing link)
-// https://developer.nvidia.com/rdp/form/cudnn-download-survey
-tar xzf cudnn-7.0-linux-x64-v4.0-prod.tgz
-sudo cp -a cuda/lib64/<span class="pl-k">*</span> /usr/local/lib/
-sudo cp -a cuda/include/<span class="pl-k">*</span> /usr/local/include/
-sudo ldconfig</pre></div>
+<div class="highlight highlight-source-shell"><pre><span class="pl-c"># download .whl @firefox (directly access the follwing link)</span>
+<span class="pl-c"># https://developer.nvidia.com/rdp/form/cudnn-download-survey</span>
+$ tar xzf cudnn-7.0-linux-x64-v4.0-prod.tgz
+$ sudo cp -a cuda/lib64/<span class="pl-k">*</span> /usr/local/lib/
+$ sudo cp -a cuda/include/<span class="pl-k">*</span> /usr/local/include/
+$ sudo ldconfig</pre></div>
 
 <p>3)tensorflow</p>
 
-<div class="highlight highlight-source-shell"><pre>sudo apt-get install python-dev python-virtualenv
-// download .whl @firefox (directly access the follwing link)
-// https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow-0.8.0-cp27-none-linux_x86_64.whl
-<span class="pl-c1">cd</span> Download
-sudo pip install tensorflow-0.8.0-cp27-none-linux_x86_64.whl</pre></div>
+<div class="highlight highlight-source-shell"><pre>$ sudo apt-get install python-dev python-virtualenv
+<span class="pl-c"># download .whl @firefox (directly access the follwing link)</span>
+<span class="pl-c"># https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow-0.8.0-cp27-none-linux_x86_64.whl</span>
+$ <span class="pl-c1">cd</span> Download
+$ sudo pip install tensorflow-0.8.0-cp27-none-linux_x86_64.whl</pre></div>
 
 <p>reference</p>
 
